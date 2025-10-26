@@ -517,84 +517,12 @@ const Index = () => {
               </Card>
             </a>
 
-            <button
-              onClick={handleCopyEmail}
-              className="group"
-            >
-              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 hover:border-primary hover:scale-110 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300 cursor-pointer h-full">
-                <Copy className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                <p className="font-semibold mb-1 text-sm">Copy Email</p>
-              </Card>
-            </button>
-          </div>
-
-          {/* Contact Form */}
-          <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">Your Name</label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Your Email</label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="john@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 focus:border-primary transition-colors"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">Message</label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell me about your idea or project..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={5}
-                    className="bg-secondary/50 border-primary/20 focus:border-primary transition-colors resize-none"
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full glow-cyan group"
-                >
-                  <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </Button>
-              </form>
-            ) : (
-              <div className="text-center py-12 animate-fade-in">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 animate-glow">
-                  <CheckCircle2 className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Thank You! 🎉</h3>
-                <p className="text-muted-foreground">Your message has been sent successfully. I'll get back to you soon!</p>
-              </div>
-            )}
-          </Card>
-        </div>
-      </section>
+</section>
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border/50 text-center">
         <p className="text-sm text-muted-foreground">
-          Built with 💻 and ☕ by <span className="text-primary font-semibold">Khushmit Bokre</span>
+          Built with <Code2 className="w-4 h-4 text-primary" /> by Khushmit Bokre</span>
         </p>
       </footer>
     </div>
