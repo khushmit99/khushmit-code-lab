@@ -68,12 +68,21 @@ const Index = () => {
             Here, I bring logic to life through code. Explore my journey as I transform ideas into interactive, functional, and meaningful digital experiences.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
-            <Button size="lg" className="glow-cyan group">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            <Button 
+              size="lg" 
+              className="glow-cyan group w-full sm:w-auto"
+              onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <Sparkles className="w-4 h-4 mr-2 group-hover:animate-spin" />
               Explore My Work
             </Button>
-            <Button size="lg" variant="outline" className="border-primary/30 hover:border-primary">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary/30 hover:border-primary w-full sm:w-auto"
+              onClick={() => window.location.href = 'mailto:khushmitbokre@gmail.com'}
+            >
               <Mail className="w-4 h-4 mr-2" />
               Get In Touch
             </Button>
@@ -119,52 +128,80 @@ const Index = () => {
 
       {/* About Me Section */}
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-12 justify-center md:justify-start">
             <Zap className="w-8 h-8 text-primary animate-glow" />
             <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
           </div>
 
-          <Card className="p-8 bg-card border-primary/20 card-hover">
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">👋</span>
-                <span className="flex-1">
-                  Hey there, I'm <span className="text-primary font-semibold">Khushmit Bokre</span>, 
-                  a curious and passionate Class 11 student who's fascinated by how the internet works behind the scenes.
-                </span>
-              </p>
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <Card className="p-8 bg-gradient-to-br from-card via-secondary/20 to-card border-primary/20 card-hover h-full animate-fade-in">
+              <div className="space-y-6 text-base md:text-lg leading-relaxed">
+                <p className="flex items-start gap-3">
+                  <span className="text-4xl animate-float">👋</span>
+                  <span className="flex-1">
+                    Hey there, I'm <span className="text-primary font-semibold">Khushmit Bokre</span>, 
+                    a curious and passionate Class 11 student who's fascinated by how the internet works behind the scenes.
+                  </span>
+                </p>
 
-              <p className="text-muted-foreground">
-                I spend my time writing code in C++ and Python, building web projects, and exploring 
-                backend systems that power the digital world.
-              </p>
+                <p className="text-muted-foreground">
+                  I spend my time writing code in <span className="text-primary font-medium">C++</span> and <span className="text-primary font-medium">Python</span>, building web projects, and exploring 
+                  backend systems that power the digital world.
+                </p>
 
-              <p className="text-muted-foreground">
-                For me, programming isn't just about syntax — it's about creating solutions, building 
-                systems that scale, and learning how small ideas can become big innovations.
-              </p>
+                <p className="text-muted-foreground">
+                  For me, programming isn't just about syntax — it's about creating solutions, building 
+                  systems that scale, and learning how small ideas can become big innovations.
+                </p>
 
-              <p className="text-muted-foreground">
-                When I'm not coding, you'll probably find me experimenting with new tools, solving problems, 
-                or learning something new every single day.
-              </p>
-            </div>
+                <p className="text-muted-foreground">
+                  When I'm not coding, you'll probably find me experimenting with new tools, solving problems, 
+                  or learning something new every single day.
+                </p>
+              </div>
+            </Card>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              {[
-                { icon: Code2, label: "Backend" },
-                { icon: Database, label: "Databases" },
-                { icon: Server, label: "Servers" },
-                { icon: Terminal, label: "CLI" }
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 border border-primary/10">
-                  <item.icon className="w-4 h-4 text-primary" />
-                  <span className="text-sm">{item.label}</span>
+            <div className="space-y-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 card-hover">
+                <div className="flex items-center gap-3 mb-4">
+                  <Code2 className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-semibold">Backend Focus</h3>
                 </div>
-              ))}
+                <p className="text-muted-foreground">
+                  Specializing in server-side logic, APIs, and database management to create robust digital solutions.
+                </p>
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 card-hover">
+                <div className="flex items-center gap-3 mb-4">
+                  <Database className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-semibold">Always Learning</h3>
+                </div>
+                <p className="text-muted-foreground">
+                  Constantly exploring new technologies, frameworks, and best practices to stay ahead in the tech world.
+                </p>
+              </Card>
+
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: Code2, label: "Backend" },
+                  { icon: Database, label: "Databases" },
+                  { icon: Server, label: "Servers" },
+                  { icon: Terminal, label: "CLI" }
+                ].map((item, i) => (
+                  <div 
+                    key={item.label} 
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 hover:scale-105 transition-all animate-fade-in"
+                    style={{ animationDelay: `${0.4 + i * 0.1}s` }}
+                  >
+                    <item.icon className="w-4 h-4 text-primary" />
+                    <span className="text-sm">{item.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
@@ -222,29 +259,34 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4">
+      <section id="skills" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Target className="w-8 h-8 text-primary animate-glow" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills That Power My Code</h2>
-            <p className="text-muted-foreground text-lg">A quick look at what I work with and how I think</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">Skills That Power My Code</h2>
+            <p className="text-muted-foreground text-base md:text-lg animate-fade-in" style={{ animationDelay: "0.1s" }}>A quick look at what I work with and how I think</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Programming Languages */}
-            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 card-hover">
+            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 hover:border-primary/40 transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] animate-fade-in">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Code2 className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Code2 className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-xl font-semibold">Programming Languages</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">💻 Efficient. Readable. Logical.</p>
               <div className="flex flex-wrap gap-2">
-                {skills.programming.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary/50 border-primary/10">
+                {skills.programming.map((skill, i) => (
+                  <Badge 
+                    key={skill} 
+                    variant="secondary" 
+                    className="bg-secondary/50 border-primary/10 hover:border-primary/30 hover:scale-110 transition-all animate-fade-in"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
                     {skill}
                   </Badge>
                 ))}
@@ -252,17 +294,22 @@ const Index = () => {
             </Card>
 
             {/* Core Skills */}
-            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 card-hover">
+            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 hover:border-primary/40 transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Zap className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-xl font-semibold">Core Skills</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">🧠 Think clearly. Debug fast. Ship clean code.</p>
               <div className="flex flex-wrap gap-2">
-                {skills.core.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary/50 border-primary/10">
+                {skills.core.map((skill, i) => (
+                  <Badge 
+                    key={skill} 
+                    variant="secondary" 
+                    className="bg-secondary/50 border-primary/10 hover:border-primary/30 hover:scale-110 transition-all animate-fade-in"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
                     {skill}
                   </Badge>
                 ))}
@@ -270,17 +317,22 @@ const Index = () => {
             </Card>
 
             {/* Backend Development */}
-            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 card-hover">
+            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 hover:border-primary/40 transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] animate-fade-in" style={{ animationDelay: "0.2s" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Server className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Server className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-xl font-semibold">Backend Development</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">⚙️ Learning the logic behind the screens.</p>
               <div className="flex flex-wrap gap-2">
-                {skills.backend.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary/50 border-primary/10">
+                {skills.backend.map((skill, i) => (
+                  <Badge 
+                    key={skill} 
+                    variant="secondary" 
+                    className="bg-secondary/50 border-primary/10 hover:border-primary/30 hover:scale-110 transition-all animate-fade-in"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
                     {skill}
                   </Badge>
                 ))}
@@ -288,17 +340,22 @@ const Index = () => {
             </Card>
 
             {/* Always Learning */}
-            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 card-hover">
+            <Card className="p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 hover:border-primary/40 transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-xl font-semibold">Always Learning</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">📚 Projects that push me further.</p>
               <div className="flex flex-wrap gap-2">
-                {skills.learning.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary/50 border-primary/10">
+                {skills.learning.map((skill, i) => (
+                  <Badge 
+                    key={skill} 
+                    variant="secondary" 
+                    className="bg-secondary/50 border-primary/10 hover:border-primary/30 hover:scale-110 transition-all animate-fade-in"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
                     {skill}
                   </Badge>
                 ))}
@@ -309,34 +366,105 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Mail className="w-8 h-8 text-primary animate-glow" />
+      <section className="py-20 px-4 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-primary"
+              style={{
+                width: Math.random() * 3 + 1 + "px",
+                height: Math.random() * 3 + 1 + "px",
+                left: Math.random() * 100 + "%",
+                top: Math.random() * 100 + "%",
+                animation: `float ${Math.random() * 4 + 3}s ease-in-out infinite`,
+                animationDelay: Math.random() * 2 + "s"
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-3 mb-6 animate-fade-in">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center animate-glow">
+              <Mail className="w-6 h-6 text-primary" />
+            </div>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect!</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Have a question, idea, or collaboration in mind?<br />
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 animate-fade-in">Let's Connect!</h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            Have a question, idea, or collaboration in mind?<br className="hidden sm:block" />
             Feel free to reach out — I'd love to connect with fellow learners and creators.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="glow-cyan group">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <a 
+              href="mailto:khushmitbokre@gmail.com"
+              className="group"
+            >
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 hover:border-primary hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer h-full">
+                <Mail className="w-8 h-8 text-primary mx-auto mb-3 group-hover:animate-bounce" />
+                <p className="font-semibold mb-1">Email Me</p>
+                <p className="text-sm text-muted-foreground">Let's talk</p>
+              </Card>
+            </a>
+
+            <a 
+              href="https://linkedin.com/in/khushmit-bokre" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 hover:border-primary hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer h-full">
+                <Linkedin className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                <p className="font-semibold mb-1">LinkedIn</p>
+                <p className="text-sm text-muted-foreground">Connect with me</p>
+              </Card>
+            </a>
+
+            <a 
+              href="https://github.com/khushmitbokre" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 hover:border-primary hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer h-full">
+                <Github className="w-8 h-8 text-primary mx-auto mb-3 group-hover:rotate-12 transition-transform" />
+                <p className="font-semibold mb-1">GitHub</p>
+                <p className="text-sm text-muted-foreground">View my code</p>
+              </Card>
+            </a>
+
+            <a 
+              href="#" 
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="group"
+            >
+              <Card className="p-6 bg-gradient-to-br from-primary/10 to-transparent border-primary/30 hover:border-primary hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer h-full">
+                <Globe className="w-8 h-8 text-primary mx-auto mb-3 group-hover:rotate-180 transition-transform duration-500" />
+                <p className="font-semibold mb-1">Projects</p>
+                <p className="text-sm text-muted-foreground">Explore work</p>
+              </Card>
+            </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <Button 
+              size="lg" 
+              className="glow-cyan group w-full sm:w-auto"
+              onClick={() => window.location.href = 'mailto:khushmitbokre@gmail.com'}
+            >
               <Mail className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-              Email Me
+              Send a Message
             </Button>
-            <Button size="lg" variant="outline" className="border-primary/30 hover:border-primary group">
-              <Linkedin className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-              LinkedIn
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary/30 hover:border-primary group">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary/30 hover:border-primary w-full sm:w-auto group"
+              onClick={() => window.open('https://github.com/khushmitbokre', '_blank')}
+            >
               <Github className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-              GitHub
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary/30 hover:border-primary group">
-              <Globe className="w-5 h-5 mr-2 group-hover:rotate-180 transition-transform duration-500" />
-              Projects
+              View GitHub
             </Button>
           </div>
         </div>
